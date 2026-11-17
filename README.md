@@ -13,7 +13,7 @@ Edit the title, subtitle, short title, author, and status at the top of `report/
 
 ## Label evidence
 
-The sample findings show three inline labels. Use `\LblGov{}` for an official government record, `\LblVendor{}` for a supplier's own statement, and `\LblSec{}` for secondary reporting. Cite the underlying source alongside the label and state any limit on what the source establishes.
+The sample findings show three inline labels. Use `\PrimaryRecord{}` for a direct record of an observation or event, `\FirstPartyStatement{}` for a statement from an organization or person involved, and `\SecondaryReporting{}` for secondary reporting. Cite the underlying source alongside the label and state any limit on what the source establishes.
 
 ## Build the PDF
 
