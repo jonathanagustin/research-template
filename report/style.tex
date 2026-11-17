@@ -1,0 +1,50 @@
+\usepackage[letterpaper,margin=1in,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[scaled=0.95]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{caption}
+\usepackage[hidelinks,pdfpagelabels,plainpages=false]{hyperref}
+
+\definecolor{ReportAccent}{HTML}{1F4E79}
+\definecolor{ReportMuted}{HTML}{525B65}
+
+\titleformat{\section}{\Large\bfseries\color{ReportAccent}}
+  {\thesection}{0.6em}{}[\vspace{2pt}{\color{ReportAccent}\titlerule[0.8pt]}]
+\titleformat{\subsection}{\large\bfseries\color{ReportAccent}}
+  {\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{18pt}{8pt}
+
+\fancypagestyle{report}{%
+  \fancyhf{}
+  \fancyhead[L]{\small\color{ReportMuted}\ReportShortTitle}
+  \fancyhead[R]{\small\color{ReportMuted}\ReportStatus}
+  \fancyfoot[C]{\small\color{ReportMuted}Page \thepage\ of \pageref*{LastPage}}
+  \renewcommand{\headrulewidth}{0.4pt}
+}
+
+\captionsetup{font=small,labelfont=bf}
+\hypersetup{pdftitle={\ReportTitle},pdfauthor={\ReportAuthor}}
+
+\newcommand{\MakeReportCover}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \noindent{\color{ReportAccent}\rule{\linewidth}{2pt}}\par
+    \vspace{1.5cm}
+    {\Huge\bfseries\color{ReportAccent}\ReportTitle\par}
+    \vspace{0.4cm}
+    {\LARGE\ReportSubtitle\par}
+    \vspace{1.5cm}
+    {\large\ReportAuthor\par}
+    {\large\ReportStatus\par}
+    \vfill
+    \noindent{\color{ReportAccent}\rule{\linewidth}{2pt}}\par
+  \end{titlepage}
+}

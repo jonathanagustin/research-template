@@ -7,9 +7,13 @@ Use this template to run an evidence-backed research project. The sample report 
 3. Register evidence in `data/sources.csv` and add cited sources to `report/sources.bib`. Use the same source IDs in both files.
 4. Keep collection methods and open questions in `notes/`. Use LaTeX's `\cite{source-id}` for claims supported by an entry in the bibliography.
 
+## Customize the cover and style
+
+Edit the title, subtitle, short title, author, and status at the top of `report/main.tex`. Set the accent color in `report/style.tex`, which also defines the cover, headings, captions, and running page headers and footers.
+
 ## Build the PDF
 
-Install a TeX distribution with `latexmk`, `pdflatex`, BibTeX, and the `geometry` and `hyperref` packages. On Ubuntu, install `latexmk texlive-latex-recommended`. From the repository root, run:
+Install a TeX distribution with `latexmk`, `pdflatex`, BibTeX, and the packages listed in `report/style.tex`. On Ubuntu, install `latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended`. From the repository root, run:
 
 ```sh
 latexmk -cd -pdf -Werror -interaction=nonstopmode -halt-on-error -outdir=build report/main.tex
