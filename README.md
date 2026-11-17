@@ -11,6 +11,10 @@ Use this template to run an evidence-backed research project. The sample report 
 
 Edit the title, subtitle, short title, author, and status at the top of `report/main.tex`. Set the accent color in `report/style.tex`, which also defines the cover, headings, captions, and running page headers and footers.
 
+## Label evidence
+
+The sample findings show three inline labels. Use `\LblGov{}` for an official government record, `\LblVendor{}` for a supplier's own statement, and `\LblSec{}` for secondary reporting. Cite the underlying source alongside the label and state any limit on what the source establishes.
+
 ## Build the PDF
 
 Install a TeX distribution with `latexmk`, `pdflatex`, BibTeX, and the packages listed in `report/style.tex`. On Ubuntu, install `latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended`. From the repository root, run:

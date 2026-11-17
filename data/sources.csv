@@ -1,2 +1,4 @@
 id,title,locator,accessed,notes
-demo-observations,Synthetic visitor observations,data/example-observations.csv,,Fictional records for a single session
+demo-library-record,Fictional city library pilot record,data/example-source-excerpts.md#library-record,,Official record in the example
+demo-vendor-statement,Fictional guide supplier statement,data/example-source-excerpts.md#vendor-statement,,First-party supplier claim in the example
+demo-newsletter,Fictional neighborhood newsletter,data/example-source-excerpts.md#newsletter,,Secondary reporting in the example
