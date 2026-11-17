@@ -1,0 +1,2 @@
+id,title,locator,accessed,notes
+demo-observations,Synthetic visitor observations,data/example-observations.csv,,Fictional records for a single session
