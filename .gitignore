@@ -1,5 +1,4 @@
-/build/
+/report/build/
 /data/raw/
 .env
 .env.*
-__pycache__/

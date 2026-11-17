@@ -1,11 +1,18 @@
 # Research Template
 
-Use this template to run an evidence-backed research project. The example follows library visitors choosing between print and digital guides. All example observations are fictional.
+Use this template to run an evidence-backed research project. The sample report uses fictional observations about library guide preferences.
 
-1. Select **Use this template** on GitHub to create your project.
-2. Define your question and scope in `report/draft.md`.
-3. Register evidence in `data/sources.csv`. Give each source a stable ID, a locator, and a short description of what it supports. For local evidence, use a repository-relative path.
-4. Keep working notes in `notes/` and cite sources in the draft using `{{cite:SOURCE_ID}}`.
-5. Run `python scripts/build_report.py` with Python 3.11 or newer. Open `build/report.md` to review the output. Run `python scripts/build_report.py --check` to validate without writing a report.
+1. Select **Use this template** on GitHub to start your project.
+2. Define the research question and scope in `report/main.tex`.
+3. Register evidence in `data/sources.csv` and add cited sources to `report/sources.bib`. Use the same source IDs in both files.
+4. Keep collection methods and open questions in `notes/`. Use LaTeX's `\cite{source-id}` for claims supported by an entry in the bibliography.
 
-GitHub Actions runs the same validation on pushes and pull requests. The project has no third-party Python dependencies or required plugins.
+## Build the PDF
+
+Install a TeX distribution with `latexmk`, `pdflatex`, BibTeX, and the `geometry` and `hyperref` packages. On Ubuntu, install `latexmk texlive-latex-recommended`. From the repository root, run:
+
+```sh
+latexmk -cd -pdf -Werror -interaction=nonstopmode -halt-on-error -outdir=build report/main.tex
+```
+
+Open `report/build/main.pdf`. GitHub Actions runs the same command on pushes, pull requests, and manual requests. Download **report-pdf** from the completed **Build report** run.
