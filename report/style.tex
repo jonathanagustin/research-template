@@ -53,15 +53,17 @@
     \null
     \begin{tikzpicture}[remember picture,overlay]
       \begin{scope}
-        \clip (current page.south west) rectangle (current page.north east);
-        \fill[CoverBase] (current page.south west) rectangle (current page.north east);
+        % Extend the artwork past the PDF page box to avoid edge seams.
+        \coordinate (coverSW) at ([xshift=-2mm,yshift=-2mm]current page.south west);
+        \coordinate (coverNE) at ([xshift=2mm,yshift=2mm]current page.north east);
+        \fill[CoverBase] (coverSW) rectangle (coverNE);
         \IfFileExists{cover.jpg}{%
           \node[inner sep=0pt] at (current page.center)
-            {\includegraphics[width=\paperwidth,height=\paperheight]{cover.jpg}};
+            {\includegraphics[width=\dimexpr\paperwidth+4mm\relax,height=\dimexpr\paperheight+4mm\relax]{cover.jpg}};
           \fill[CoverBase,opacity=0.82]
-            (current page.south west) rectangle (current page.north east);
+            (coverSW) rectangle (coverNE);
         }{%
-          \begin{scope}[shift={(current page.south west)},x=\paperwidth,y=\paperheight]
+          \begin{scope}[shift={(coverSW)},x=\dimexpr\paperwidth+4mm\relax,y=\dimexpr\paperheight+4mm\relax]
             \fill[CoverPanel] (0,0) -- (1,0) -- (1,0.66)
               .. controls (0.77,0.42) and (0.4,0.22) .. (0,0.15) -- cycle;
             \fill[CoverDeep] (0,0) -- (1,0) -- (1,0.43)
