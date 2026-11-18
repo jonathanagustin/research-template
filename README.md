@@ -19,7 +19,7 @@ The sample findings show three inline labels. Use `\PrimaryRecord{}` for a direc
 
 ## Build the PDF
 
-Install a TeX distribution with `latexmk`, `pdflatex`, BibTeX, and the packages listed in `report/style.tex`. On Ubuntu, install `latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended`. From the repository root, run:
+Install a TeX distribution with `latexmk`, `pdflatex`, BibTeX, and the packages listed in `report/style.tex`. On Ubuntu, install `latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra`. From the repository root, run:
 
 ```sh
 latexmk -cd -pdf -Werror -interaction=nonstopmode -halt-on-error -outdir=build report/main.tex

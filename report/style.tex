@@ -1,7 +1,6 @@
 \usepackage[letterpaper,margin=1in,headheight=15pt]{geometry}
 \usepackage[T1]{fontenc}
-\usepackage[scaled=0.95]{helvet}
-\renewcommand{\familydefault}{\sfdefault}
+\usepackage[sfdefault]{FiraSans}
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage{graphicx}
@@ -21,12 +20,15 @@
 \definecolor{CoverDeep}{HTML}{0D2236}
 \definecolor{CoverHighlight}{HTML}{A6DBE3}
 \definecolor{ReportMuted}{HTML}{525B65}
+\definecolor{ReportInk}{HTML}{1F2933}
 
 \titleformat{\section}{\Large\bfseries\color{ReportAccent}}
-  {\thesection}{0.6em}{}[\vspace{2pt}{\color{ReportAccent}\titlerule[0.8pt]}]
+  {\textcolor{ReportMuted}{\thesection}}{0.65em}{}[\vspace{3pt}{\color{ReportAccent!40}\titlerule[0.5pt]}]
 \titleformat{\subsection}{\large\bfseries\color{ReportAccent}}
   {\thesubsection}{0.6em}{}
-\titlespacing*{\section}{0pt}{18pt}{8pt}
+\titlespacing*{\section}{0pt}{19pt}{7pt}
+\AtBeginDocument{\color{ReportInk}}
+\AddToHook{env/thebibliography/begin}{\small}
 
 \fancypagestyle{report}{%
   \fancyhf{}
@@ -73,11 +75,11 @@
             align=left,text=white]
         at ([xshift=0.11\paperwidth,yshift=-0.20\paperheight]current page.north west)
         {%
-          {\color{CoverHighlight}\large\bfseries\ReportStatus\par}
+          {\color{CoverHighlight}\small\bfseries\textls[75]{\MakeUppercase{\ReportStatus}}\par}
           \vspace{1.25cm}%
           {\raggedright\hyphenpenalty=10000\relax\fontsize{44}{47}\selectfont\bfseries\ReportTitle\par}
           \vspace{0.45cm}%
-          {\LARGE\ReportSubtitle\par}
+          {\color{CoverHighlight!55!white}\LARGE\ReportSubtitle\par}
         };
       \node[anchor=south west,inner sep=0pt,text width=0.77\paperwidth,
             align=left,text=white]
