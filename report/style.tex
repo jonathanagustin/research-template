@@ -8,11 +8,12 @@
 \usepackage{tikz}
 \usepackage{booktabs}
 \usepackage{parskip}
+\usepackage{setspace}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{caption}
-\usepackage[hidelinks,pdfpagelabels,plainpages=false]{hyperref}
+\usepackage[colorlinks,pdfpagelabels,plainpages=false]{hyperref}
 
 \definecolor{ReportAccent}{HTML}{174B68}
 \definecolor{CoverBase}{HTML}{102B42}
@@ -36,7 +37,13 @@
 }
 
 \captionsetup{font=small,labelfont=bf}
-\hypersetup{pdftitle={\ReportTitle},pdfauthor={\ReportAuthor}}
+\hypersetup{
+  pdftitle={\ReportTitle},
+  pdfauthor={\ReportAuthor},
+  linkcolor=ReportAccent,
+  urlcolor=ReportAccent,
+  citecolor=ReportAccent
+}
 
 \newcommand{\MakeReportCover}{%
   \begin{titlepage}
