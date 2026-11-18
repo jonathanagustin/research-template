@@ -11,6 +11,8 @@ Use this template to run an evidence-backed research project. The sample report 
 
 Edit the title, subtitle, short title, author, and status at the top of `report/main.tex`. Set the accent color in `report/style.tex`, which also defines the cover, headings, captions, and running page headers and footers.
 
+The cover artwork is drawn in TikZ. To use a photograph, add `report/cover.jpg` cropped to the US Letter aspect ratio (8.5:11). The cover applies a dark tint to keep the title readable.
+
 ## Label evidence
 
 The sample findings show three inline labels. Use `\PrimaryRecord{}` for a direct record of an observation or event, `\FirstPartyStatement{}` for a statement from an organization or person involved, and `\SecondaryReporting{}` for secondary reporting. Cite the underlying source alongside the label and state any limit on what the source establishes.

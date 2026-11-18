@@ -5,6 +5,7 @@
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{tikz}
 \usepackage{booktabs}
 \usepackage{parskip}
 \usepackage{titlesec}
@@ -13,7 +14,11 @@
 \usepackage{caption}
 \usepackage[hidelinks,pdfpagelabels,plainpages=false]{hyperref}
 
-\definecolor{ReportAccent}{HTML}{1F4E79}
+\definecolor{ReportAccent}{HTML}{174B68}
+\definecolor{CoverBase}{HTML}{102B42}
+\definecolor{CoverPanel}{HTML}{16445D}
+\definecolor{CoverDeep}{HTML}{0D2236}
+\definecolor{CoverHighlight}{HTML}{A6DBE3}
 \definecolor{ReportMuted}{HTML}{525B65}
 
 \titleformat{\section}{\Large\bfseries\color{ReportAccent}}
@@ -26,7 +31,7 @@
   \fancyhf{}
   \fancyhead[L]{\small\color{ReportMuted}\ReportShortTitle}
   \fancyhead[R]{\small\color{ReportMuted}\ReportStatus}
-  \fancyfoot[C]{\small\color{ReportMuted}Page \thepage\ of \pageref*{LastPage}}
+  \fancyfoot[R]{\small\color{ReportMuted}Page \thepage\ of \pageref*{LastPage}}
   \renewcommand{\headrulewidth}{0.4pt}
 }
 
@@ -36,16 +41,43 @@
 \newcommand{\MakeReportCover}{%
   \begin{titlepage}
     \thispagestyle{empty}
-    \noindent{\color{ReportAccent}\rule{\linewidth}{2pt}}\par
-    \vspace{1.5cm}
-    {\Huge\bfseries\color{ReportAccent}\ReportTitle\par}
-    \vspace{0.4cm}
-    {\LARGE\ReportSubtitle\par}
-    \vspace{1.5cm}
-    {\large\ReportAuthor\par}
-    {\large\ReportStatus\par}
-    \vfill
-    \noindent{\color{ReportAccent}\rule{\linewidth}{2pt}}\par
+    \null
+    \begin{tikzpicture}[remember picture,overlay]
+      \begin{scope}
+        \clip (current page.south west) rectangle (current page.north east);
+        \fill[CoverBase] (current page.south west) rectangle (current page.north east);
+        \IfFileExists{cover.jpg}{%
+          \node[inner sep=0pt] at (current page.center)
+            {\includegraphics[width=\paperwidth,height=\paperheight]{cover.jpg}};
+          \fill[CoverBase,opacity=0.82]
+            (current page.south west) rectangle (current page.north east);
+        }{%
+          \begin{scope}[shift={(current page.south west)},x=\paperwidth,y=\paperheight]
+            \fill[CoverPanel] (0,0) -- (1,0) -- (1,0.66)
+              .. controls (0.77,0.42) and (0.4,0.22) .. (0,0.15) -- cycle;
+            \fill[CoverDeep] (0,0) -- (1,0) -- (1,0.43)
+              .. controls (0.73,0.19) and (0.38,0.08) .. (0,0.05) -- cycle;
+            \draw[CoverHighlight,opacity=0.45,line width=0.7pt]
+              (0,0.15) .. controls (0.4,0.22) and (0.77,0.42) .. (1,0.66);
+          \end{scope}
+        }
+      \end{scope}
+      \node[anchor=north west,inner sep=0pt,text width=0.77\paperwidth,
+            align=left,text=white]
+        at ([xshift=0.11\paperwidth,yshift=-0.20\paperheight]current page.north west)
+        {%
+          {\color{CoverHighlight}\large\bfseries\ReportStatus\par}
+          \vspace{1.25cm}%
+          {\fontsize{44}{47}\selectfont\bfseries\ReportTitle\par}
+          \vspace{0.45cm}%
+          {\LARGE\ReportSubtitle\par}
+        };
+      \node[anchor=south west,inner sep=0pt,text width=0.77\paperwidth,
+            align=left,text=white]
+        at ([xshift=0.11\paperwidth,yshift=0.10\paperheight]current page.south west)
+        {\textcolor{CoverHighlight}{\rule{2.2cm}{1.5pt}}\par
+         \vspace{0.35cm}{\large\ReportAuthor}};
+    \end{tikzpicture}%
   \end{titlepage}
 }
 
